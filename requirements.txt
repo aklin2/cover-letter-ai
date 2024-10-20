@@ -1,0 +1,4 @@
+pypdf2
+Flask
+google-cloud-aiplatform
+
