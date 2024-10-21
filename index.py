@@ -51,10 +51,8 @@ def login():
         
         
         try:
-            print(json['candidates'][0]['content']['parts'][0]['text'])
             data = json['candidates'][0]['content']['parts'][0]['text']
         except:
-            print(json)
             data = json
         return render_template("answer.html", data=data, error=error)
     
