@@ -1,11 +1,22 @@
-from flask import Flask, render_template, request, jsonify
+import os
 import requests
+from flask import Flask, render_template, request, jsonify
 
 
 app = Flask(__name__)
 
-with open("./apikey.txt") as f:
-    apikey = f.read()
+#####################
+## Get the API Key ##
+#####################
+# From environmental varaiables
+apikey = os.environ.get("GOOGLE_API_KEY", None)
+
+# From apikey.txt file
+if not apikey:
+    with open("./apikey.txt") as f:
+        apikey = f.read()
+        if apikey == "<WRITE IN YOUR GEMINI API KEY HERE>":
+            raise Exception("You did not put your google api key into apikey.txt")
 
 
 
